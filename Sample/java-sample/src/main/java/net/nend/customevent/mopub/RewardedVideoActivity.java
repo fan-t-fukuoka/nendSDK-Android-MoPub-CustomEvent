@@ -1,8 +1,8 @@
 package net.nend.customevent.mopub;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,11 +15,11 @@ import net.nend.android.mopub.customevent.NendRewardedVideoCustomEvent;
 
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity {
+public class RewardedVideoActivity extends AppCompatActivity {
 
-    private static final String MOPUB_AD_UNIT_ID = "your ad unit id";
+    private static final String MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID";
 
-    private MoPubRewardedVideoListener mMoPubRewardedVideoListener = new MoPubRewardedVideoListener() {
+    private MoPubRewardedVideoListener moPubRewardedVideoListener = new MoPubRewardedVideoListener() {
         @Override
         public void onRewardedVideoLoadSuccess(@NonNull String adUnitId) {
             showToast("Load Success adUnitId: " + adUnitId, Toast.LENGTH_SHORT);
@@ -59,15 +59,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_rewarded_video);
 
-        MoPubRewardedVideos.initializeRewardedVideo(MainActivity.this);
-        MoPubRewardedVideos.setRewardedVideoListener(mMoPubRewardedVideoListener);
+        MoPubRewardedVideos.initializeRewardedVideo(RewardedVideoActivity.this);
+        MoPubRewardedVideos.setRewardedVideoListener(moPubRewardedVideoListener);
 
         findViewById(R.id.bt_load).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NendRewardedVideoCustomEvent.NendInstanceMediationSettings settings = new NendRewardedVideoCustomEvent.NendInstanceMediationSettings("your user id");
+                NendRewardedVideoCustomEvent.NendInstanceMediationSettings settings = new NendRewardedVideoCustomEvent.NendInstanceMediationSettings.Builder()
+                        .setUserId("you user id")
+                        .setAge(18)
+                        .setBirthday(2000,1,1)
+                        .setGender(NendRewardedVideoCustomEvent.GENDER_MALE)
+                        .addCustomFeature("customIntParam", 123)
+                        .addCustomFeature("customDoubleParam", 123.45)
+                        .addCustomFeature("customStringParam", "test")
+                        .addCustomFeature("customBooleanParam", true)
+                        .build();
                 MoPubRewardedVideos.loadRewardedVideo(MOPUB_AD_UNIT_ID, settings);
             }
         });
@@ -83,6 +92,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showToast(String message, int duration) {
-        Toast.makeText(MainActivity.this, message, duration).show();
+        Toast.makeText(RewardedVideoActivity.this, message, duration).show();
     }
 }
