@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.nend.customevent.mopub.MainActivity">
+    tools:context="net.nend.customevent.mopub.RewardedVideoActivity">
 
     <Button
         android:id="@+id/bt_load"

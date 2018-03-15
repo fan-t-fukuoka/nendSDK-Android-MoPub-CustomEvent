@@ -3,17 +3,15 @@ package net.nend.customevent.mopub
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.Toast
 import com.mopub.common.MoPubReward
 import com.mopub.mobileads.MoPubErrorCode
 import com.mopub.mobileads.MoPubRewardedVideoListener
 import com.mopub.mobileads.MoPubRewardedVideos
-import kotlinx.android.synthetic.main.activity_main.*
 import net.nend.android.mopub.customevent.NendRewardedVideoCustomEvent
 
-private const val MOPUB_AD_UNIT_ID = "your ad unit id"
-
-class MainActivity : AppCompatActivity() {
+class RewardedVideoActivity : AppCompatActivity() {
 
     private val mopubRewardedListener = object : MoPubRewardedVideoListener {
         override fun onRewardedVideoLoadSuccess(adUnitId: String) {
@@ -45,24 +43,37 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun Context.toast(message: CharSequence, duration: Int) = Toast.makeText(this, message, duration).show()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_rewarded_video)
 
         MoPubRewardedVideos.initializeRewardedVideo(this)
         MoPubRewardedVideos.setRewardedVideoListener(mopubRewardedListener)
 
-        bt_load.setOnClickListener{
-            val setting = NendRewardedVideoCustomEvent.NendInstanceMediationSettings("your user id")
-            MoPubRewardedVideos.loadRewardedVideo(MOPUB_AD_UNIT_ID, setting)
+        findViewById<View>(R.id.bt_load).setOnClickListener {
+            val settings = NendRewardedVideoCustomEvent.NendInstanceMediationSettings.Builder()
+                    .setUserId("you user id")
+                    .setAge(18)
+                    .setBirthday(2000, 1, 1)
+                    .setGender(NendRewardedVideoCustomEvent.GENDER_MALE)
+                    .addCustomFeature("customIntParam", 123)
+                    .addCustomFeature("customDoubleParam", 123.45)
+                    .addCustomFeature("customStringParam", "test")
+                    .addCustomFeature("customBooleanParam", true)
+                    .build()
+            MoPubRewardedVideos.loadRewardedVideo(MOPUB_AD_UNIT_ID, settings)
         }
 
-        bt_show.setOnClickListener {
+        findViewById<View>(R.id.bt_show).setOnClickListener {
             if (MoPubRewardedVideos.hasRewardedVideo(MOPUB_AD_UNIT_ID)) {
                 MoPubRewardedVideos.showRewardedVideo(MOPUB_AD_UNIT_ID)
             }
         }
+    }
+
+    private fun Context.toast(message: CharSequence, duration: Int) = Toast.makeText(this, message, duration).show()
+
+    companion object {
+        const val MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID"
     }
 }
