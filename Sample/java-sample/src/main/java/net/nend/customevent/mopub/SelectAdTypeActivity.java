@@ -14,7 +14,9 @@ public class SelectAdTypeActivity extends ListActivity {
     private static final List<Class> SAMPLE_ACTIVITIES = new ArrayList<Class>() {
         {
             add(BannerActivity.class);
+            add(InterstitialActivity.class);
             add(RewardedVideoActivity.class);
+            add(InterstitialVideoActivity.class);
         }
     };
 

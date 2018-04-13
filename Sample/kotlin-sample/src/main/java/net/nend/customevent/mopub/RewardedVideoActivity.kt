@@ -9,7 +9,7 @@ import com.mopub.common.MoPubReward
 import com.mopub.mobileads.MoPubErrorCode
 import com.mopub.mobileads.MoPubRewardedVideoListener
 import com.mopub.mobileads.MoPubRewardedVideos
-import net.nend.android.mopub.customevent.NendRewardedVideoCustomEvent
+import net.nend.android.mopub.customevent.NendMediationSettings
 
 class RewardedVideoActivity : AppCompatActivity() {
 
@@ -51,11 +51,11 @@ class RewardedVideoActivity : AppCompatActivity() {
         MoPubRewardedVideos.setRewardedVideoListener(mopubRewardedListener)
 
         findViewById<View>(R.id.bt_load).setOnClickListener {
-            val settings = NendRewardedVideoCustomEvent.NendInstanceMediationSettings.Builder()
+            val settings = NendMediationSettings.Builder()
                     .setUserId("you user id")
                     .setAge(18)
                     .setBirthday(2000, 1, 1)
-                    .setGender(NendRewardedVideoCustomEvent.GENDER_MALE)
+                    .setGender(NendMediationSettings.GENDER_MALE)
                     .addCustomFeature("customIntParam", 123)
                     .addCustomFeature("customDoubleParam", 123.45)
                     .addCustomFeature("customStringParam", "test")
