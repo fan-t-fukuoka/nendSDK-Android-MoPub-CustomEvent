@@ -3,7 +3,9 @@
 
     <string-array name="type">
         <item>Banner</item>
+        <item>Interstitial</item>
         <item>Rewarded Video</item>
+        <item>Interstitial Video</item>
     </string-array>
 
 </resources>

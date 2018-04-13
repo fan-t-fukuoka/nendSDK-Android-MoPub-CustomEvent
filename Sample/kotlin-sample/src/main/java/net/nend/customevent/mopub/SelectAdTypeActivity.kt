@@ -11,7 +11,9 @@ class SelectAdTypeActivity : ListActivity() {
 
     private enum class AdType(val id: Int) {
         BANNER(0),
-        REWARDED_VIDEO(1);
+        INTERSTITIAL(1),
+        REWARDED_VIDEO(2),
+        INTERSTITIAL_VIDEO(3);
 
         companion object {
             fun getAdType(id: Int) = AdType.values().first { it.id == id }
@@ -20,9 +22,13 @@ class SelectAdTypeActivity : ListActivity() {
         fun startActivity(activity: Activity) {
             when (this) {
                 BANNER -> activity.startActivity(Intent(activity,
-                        BannerActivity::class.java))
+                    BannerActivity::class.java))
+                INTERSTITIAL -> activity.startActivity(Intent(activity,
+                        InterstitialActivity::class.java))
                 REWARDED_VIDEO -> activity.startActivity(Intent(activity,
                         RewardedVideoActivity::class.java))
+                INTERSTITIAL_VIDEO -> activity.startActivity(Intent(activity,
+                        InterstitialVideoActivity::class.java))
             }
         }
     }

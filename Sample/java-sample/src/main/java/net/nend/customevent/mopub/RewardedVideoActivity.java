@@ -1,8 +1,8 @@
 package net.nend.customevent.mopub;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
@@ -11,7 +11,7 @@ import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
 import com.mopub.mobileads.MoPubRewardedVideos;
 
-import net.nend.android.mopub.customevent.NendRewardedVideoCustomEvent;
+import net.nend.android.mopub.customevent.NendMediationSettings;
 
 import java.util.Set;
 
@@ -67,11 +67,11 @@ public class RewardedVideoActivity extends AppCompatActivity {
         findViewById(R.id.bt_load).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NendRewardedVideoCustomEvent.NendInstanceMediationSettings settings = new NendRewardedVideoCustomEvent.NendInstanceMediationSettings.Builder()
+                NendMediationSettings settings = new NendMediationSettings.Builder()
                         .setUserId("you user id")
                         .setAge(18)
                         .setBirthday(2000,1,1)
-                        .setGender(NendRewardedVideoCustomEvent.GENDER_MALE)
+                        .setGender(NendMediationSettings.GENDER_MALE)
                         .addCustomFeature("customIntParam", 123)
                         .addCustomFeature("customDoubleParam", 123.45)
                         .addCustomFeature("customStringParam", "test")

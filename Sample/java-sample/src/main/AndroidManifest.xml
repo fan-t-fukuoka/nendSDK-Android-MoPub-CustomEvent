@@ -39,6 +39,14 @@
         </activity>
         <activity android:name=".RewardedVideoActivity">
         </activity>
+        <activity
+            android:name=".InterstitialActivity"
+            android:configChanges="orientation|screenSize">
+        </activity>
+        <activity
+            android:name=".InterstitialVideoActivity"
+            android:configChanges="orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>
