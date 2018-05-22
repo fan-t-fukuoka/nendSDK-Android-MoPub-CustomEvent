@@ -6,7 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.mopub.common.MoPub;
 import com.mopub.common.MoPubReward;
+import com.mopub.common.SdkConfiguration;
+import com.mopub.common.SdkInitializationListener;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
 import com.mopub.mobileads.MoPubRewardedVideos;
@@ -61,7 +64,10 @@ public class RewardedVideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rewarded_video);
 
-        MoPubRewardedVideos.initializeRewardedVideo(RewardedVideoActivity.this);
+        SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(MOPUB_AD_UNIT_ID)
+                .build();
+        MoPub.initializeSdk(this, sdkConfiguration, initMoPubSdkListener());
+
         MoPubRewardedVideos.setRewardedVideoListener(moPubRewardedVideoListener);
 
         findViewById(R.id.bt_load).setOnClickListener(new View.OnClickListener() {
@@ -93,5 +99,14 @@ public class RewardedVideoActivity extends AppCompatActivity {
 
     private void showToast(String message, int duration) {
         Toast.makeText(RewardedVideoActivity.this, message, duration).show();
+    }
+
+    private SdkInitializationListener initMoPubSdkListener() {
+        return new SdkInitializationListener() {
+            @Override
+            public void onInitializationFinished() {
+                showToast("MoPub SDK initialized.", Toast.LENGTH_SHORT);
+            }
+        };
     }
 }
