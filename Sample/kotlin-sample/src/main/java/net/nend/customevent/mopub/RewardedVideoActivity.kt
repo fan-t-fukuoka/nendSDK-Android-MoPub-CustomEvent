@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
+import com.mopub.common.MoPub
 import com.mopub.common.MoPubReward
+import com.mopub.common.SdkConfiguration
+import com.mopub.common.SdkInitializationListener
 import com.mopub.mobileads.MoPubErrorCode
 import com.mopub.mobileads.MoPubRewardedVideoListener
 import com.mopub.mobileads.MoPubRewardedVideos
@@ -47,7 +50,10 @@ class RewardedVideoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rewarded_video)
 
-        MoPubRewardedVideos.initializeRewardedVideo(this)
+        val sdkConfiguration = SdkConfiguration.Builder(MOPUB_AD_UNIT_ID)
+                .build()
+        MoPub.initializeSdk(this, sdkConfiguration, initMoPubSdkListener())
+
         MoPubRewardedVideos.setRewardedVideoListener(mopubRewardedListener)
 
         findViewById<View>(R.id.bt_load).setOnClickListener {
@@ -72,6 +78,10 @@ class RewardedVideoActivity : AppCompatActivity() {
     }
 
     private fun Context.toast(message: CharSequence, duration: Int) = Toast.makeText(this, message, duration).show()
+
+    private fun initMoPubSdkListener() = SdkInitializationListener {
+        toast("MoPub SDK initialized.", Toast.LENGTH_SHORT)
+    }
 
     companion object {
         const val MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID"

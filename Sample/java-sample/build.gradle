@@ -27,4 +27,5 @@ dependencies {
     }
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'net.nend.android:nend-custom-event-mopub:1.2.0'
+
 }

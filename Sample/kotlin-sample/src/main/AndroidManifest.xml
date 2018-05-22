@@ -43,6 +43,8 @@
             android:name=".InterstitialVideoActivity"
             android:configChanges="orientation|screenSize">
         </activity>
+        <activity android:name="com.mopub.common.privacy.ConsentDialogActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize"/>
     </application>
 
 </manifest>
