@@ -6,6 +6,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
+import android.widget.Toast
+import com.mopub.common.MoPub
+import com.mopub.common.SdkConfiguration
+import com.mopub.common.SdkInitializationListener
 
 class SelectAdTypeActivity : ListActivity() {
 
@@ -36,10 +40,21 @@ class SelectAdTypeActivity : ListActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_ad_type)
+
+        val sdkConfiguration = SdkConfiguration.Builder(MOPUB_AD_UNIT_ID).build()
+        MoPub.initializeSdk(this, sdkConfiguration, initMoPubSdkListener())
     }
 
     override fun onListItemClick(l: ListView?, v: View?, position: Int, id: Long) {
         super.onListItemClick(l, v, position, id)
         AdType.getAdType(position).startActivity(this)
+    }
+
+    private fun initMoPubSdkListener() = SdkInitializationListener {
+        Toast.makeText(this, "MoPub SDK initialized.", Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+        const val MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID"
     }
 }

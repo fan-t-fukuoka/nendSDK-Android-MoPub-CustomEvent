@@ -5,11 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.mopub.common.MoPub;
+import com.mopub.common.SdkConfiguration;
+import com.mopub.common.SdkInitializationListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SelectAdTypeActivity extends ListActivity {
+
+    private static final String MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID";
 
     private static final List<Class> SAMPLE_ACTIVITIES = new ArrayList<Class>() {
         {
@@ -24,11 +31,23 @@ public class SelectAdTypeActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_ad_type);
+
+        SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(MOPUB_AD_UNIT_ID).build();
+        MoPub.initializeSdk(this, sdkConfiguration, initMoPubSdkListener());
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         startActivity(new Intent(this, SAMPLE_ACTIVITIES.get(position)));
+    }
+
+    private SdkInitializationListener initMoPubSdkListener() {
+        return new SdkInitializationListener() {
+            @Override
+            public void onInitializationFinished() {
+                Toast.makeText(SelectAdTypeActivity.this, "MoPub SDK initialized.", Toast.LENGTH_SHORT).show();
+            }
+        };
     }
 }
