@@ -39,21 +39,23 @@ class InterstitialVideoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_interstitial_video)
 
         findViewById<View>(R.id.bt_load).setOnClickListener {
-            interstitial = MoPubInterstitial(this, MOPUB_AD_UNIT_ID).apply {
-                interstitialAdListener = adListener
+            if (interstitial == null) {
+                interstitial = MoPubInterstitial(this, MOPUB_AD_UNIT_ID).apply {
+                    interstitialAdListener = adListener
 
-                val settings = NendMediationSettings.Builder()
-                        .setUserId("you user id")
-                        .setAge(18)
-                        .setBirthday(2000, 1, 1)
-                        .setGender(NendMediationSettings.GENDER_MALE)
-                        .addCustomFeature("customIntParam", 123)
-                        .addCustomFeature("customDoubleParam", 123.45)
-                        .addCustomFeature("customStringParam", "test")
-                        .addCustomFeature("customBooleanParam", true)
-                        .build()
-                load()
+                    val settings = NendMediationSettings.Builder()
+                            .setUserId("you user id")
+                            .setAge(18)
+                            .setBirthday(2000, 1, 1)
+                            .setGender(NendMediationSettings.GENDER_MALE)
+                            .addCustomFeature("customIntParam", 123)
+                            .addCustomFeature("customDoubleParam", 123.45)
+                            .addCustomFeature("customStringParam", "test")
+                            .addCustomFeature("customBooleanParam", true)
+                            .build()
+                }
             }
+            interstitial!!.load()
         }
 
         findViewById<View>(R.id.bt_show).setOnClickListener {

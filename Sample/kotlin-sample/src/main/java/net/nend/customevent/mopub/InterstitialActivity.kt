@@ -38,10 +38,12 @@ class InterstitialActivity : AppCompatActivity() {
         setContentView(R.layout.activity_interstitial)
 
         findViewById<View>(R.id.bt_load).setOnClickListener {
-            interstitial = MoPubInterstitial(this, MOPUB_AD_UNIT_ID).apply {
-                interstitialAdListener = adListener
-                load()
+            if (interstitial == null) {
+                interstitial = MoPubInterstitial(this, MOPUB_AD_UNIT_ID).apply {
+                    interstitialAdListener = adListener
+                }
             }
+            interstitial!!.load()
         }
 
         findViewById<View>(R.id.bt_show).setOnClickListener {

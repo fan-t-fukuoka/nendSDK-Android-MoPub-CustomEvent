@@ -48,8 +48,10 @@ public class InterstitialActivity extends AppCompatActivity {
         findViewById(R.id.bt_load).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                interstitial = new MoPubInterstitial(InterstitialActivity.this, MOPUB_AD_UNIT_ID);
-                interstitial.setInterstitialAdListener(adListener);
+                if (interstitial == null) {
+                    interstitial = new MoPubInterstitial(InterstitialActivity.this, MOPUB_AD_UNIT_ID);
+                    interstitial.setInterstitialAdListener(adListener);
+                }
                 interstitial.load();
             }
         });
