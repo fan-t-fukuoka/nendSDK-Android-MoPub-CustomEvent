@@ -50,20 +50,21 @@ public class InterstitialVideoActivity extends AppCompatActivity {
         findViewById(R.id.bt_load).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                interstitial = new MoPubInterstitial(InterstitialVideoActivity.this, MOPUB_AD_UNIT_ID);
-                interstitial.setInterstitialAdListener(adListener);
+                if (interstitial == null) {
+                    interstitial = new MoPubInterstitial(InterstitialVideoActivity.this, MOPUB_AD_UNIT_ID);
+                    interstitial.setInterstitialAdListener(adListener);
 
-                NendMediationSettings settings = new NendMediationSettings.Builder()
-                        .setUserId("userId")
-                        .setAge(18)
-                        .setBirthday(2000,1,1)
-                        .setGender(NendMediationSettings.GENDER_FEMALE)
-                        .addCustomFeature("customIntParam1", 123)
-                        .addCustomFeature("customDoubleParam1", 123.45)
-                        .addCustomFeature("customStringParam1", "testString")
-                        .addCustomFeature("customBooleanParam1", true)
-                        .build();
-
+                    NendMediationSettings settings = new NendMediationSettings.Builder()
+                            .setUserId("userId")
+                            .setAge(18)
+                            .setBirthday(2000,1,1)
+                            .setGender(NendMediationSettings.GENDER_FEMALE)
+                            .addCustomFeature("customIntParam1", 123)
+                            .addCustomFeature("customDoubleParam1", 123.45)
+                            .addCustomFeature("customStringParam1", "testString")
+                            .addCustomFeature("customBooleanParam1", true)
+                            .build();
+                }
                 interstitial.load();
             }
         });
