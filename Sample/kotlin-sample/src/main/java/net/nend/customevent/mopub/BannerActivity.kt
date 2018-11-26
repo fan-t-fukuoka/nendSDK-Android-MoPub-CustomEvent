@@ -13,7 +13,7 @@ class BannerActivity : AppCompatActivity() {
 
     private val adListener = object : MoPubView.BannerAdListener {
         override fun onBannerLoaded(banner: MoPubView) {
-            Log.d(TAG, "onBannerLoaded:" + banner)
+            Log.d(TAG, "onBannerLoaded:$banner")
         }
 
         override fun onBannerFailed(banner: MoPubView, errorCode: MoPubErrorCode) {
@@ -21,15 +21,15 @@ class BannerActivity : AppCompatActivity() {
         }
 
         override fun onBannerClicked(banner: MoPubView) {
-            Log.d(TAG, "onBannerClicked:" + banner)
+            Log.d(TAG, "onBannerClicked:$banner")
         }
 
         override fun onBannerExpanded(banner: MoPubView) {
-            Log.d(TAG, "onBannerExpanded:" + banner)
+            Log.d(TAG, "onBannerExpanded:$banner")
         }
 
         override fun onBannerCollapsed(banner: MoPubView) {
-            Log.d(TAG, "onBannerCollapsed:" + banner)
+            Log.d(TAG, "onBannerCollapsed:$banner")
         }
     }
 
