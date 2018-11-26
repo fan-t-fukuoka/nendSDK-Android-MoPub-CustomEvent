@@ -5,9 +5,5 @@
 ## Overview
 nendSDKのAndroid版MoPubカスタムイベントのサンプルです。  
 
-## Requirement
-- MoPub SDK 5.0.0 or higher
-- Android API level 16 or higher
-
 ## Usage
 詳細は[Wiki](https://github.com/fan-ADN/nendSDK-Android-MoPub-CustomEvent/wiki)をご確認ください。
