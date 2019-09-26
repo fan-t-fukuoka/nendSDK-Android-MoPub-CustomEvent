@@ -20,7 +20,7 @@ import net.nend.android.mopub.customevent.NendMediationSettings;
 */
 public class InterstitialVideoActivity extends AppCompatActivity {
 
-    private static final String MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID";
+    private static final String MOPUB_AD_UNIT_ID = "YOUR_VIDEO_INTERSTITIAL_UNIT_ID";
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MoPubInterstitial interstitial;
 

@@ -54,7 +54,7 @@ class BannerActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID"
+        const val MOPUB_AD_UNIT_ID = "YOUR_BANNER_UNIT_ID"
         const val TAG = "BannerActivity"
     }
 }

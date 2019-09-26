@@ -132,7 +132,7 @@ class InterstitialVideoActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID"
+        const val MOPUB_AD_UNIT_ID = "YOUR_VIDEO_INTERSTITIAL_UNIT_ID"
         private const val REQUEST_PERMISSIONS_REQUEST_CODE = 1
     }
 }

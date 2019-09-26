@@ -10,7 +10,7 @@ import com.mopub.mobileads.MoPubInterstitial;
 
 public class InterstitialActivity extends AppCompatActivity {
 
-    private static final String MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID";
+    private static final String MOPUB_AD_UNIT_ID = "YOUR_INTERSTITIAL_UNIT_ID";
     private MoPubInterstitial interstitial;
 
     private MoPubInterstitial.InterstitialAdListener adListener = new MoPubInterstitial.InterstitialAdListener() {

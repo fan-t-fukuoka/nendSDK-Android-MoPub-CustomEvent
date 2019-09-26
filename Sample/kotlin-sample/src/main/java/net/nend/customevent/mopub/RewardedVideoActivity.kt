@@ -128,7 +128,7 @@ class RewardedVideoActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID"
+        const val MOPUB_AD_UNIT_ID = "YOUR_REWARD_UNIT_ID"
         private const val REQUEST_PERMISSIONS_REQUEST_CODE = 1
     }
 }

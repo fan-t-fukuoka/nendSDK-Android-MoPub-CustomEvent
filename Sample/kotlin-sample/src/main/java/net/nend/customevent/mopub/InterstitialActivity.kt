@@ -65,6 +65,6 @@ class InterstitialActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID"
+        const val MOPUB_AD_UNIT_ID = "YOUR_INTERSTITIAL_UNIT_ID"
     }
 }

@@ -10,7 +10,7 @@ import com.mopub.mobileads.MoPubView;
 
 public class BannerActivity extends AppCompatActivity {
 
-    private static final String MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID";
+    private static final String MOPUB_AD_UNIT_ID = "YOUR_BANNER_UNIT_ID";
     private static final String TAG = "BannerActivity";
 
     private MoPubView mopubView;
