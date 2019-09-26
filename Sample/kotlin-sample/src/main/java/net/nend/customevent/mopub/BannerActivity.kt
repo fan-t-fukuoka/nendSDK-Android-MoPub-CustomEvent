@@ -1,7 +1,7 @@
 package net.nend.customevent.mopub
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.ViewGroup
 import com.mopub.mobileads.MoPubErrorCode
