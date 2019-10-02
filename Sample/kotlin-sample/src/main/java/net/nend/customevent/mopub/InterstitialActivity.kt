@@ -1,7 +1,7 @@
 package net.nend.customevent.mopub
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.mopub.mobileads.MoPubErrorCode
@@ -65,6 +65,6 @@ class InterstitialActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID"
+        const val MOPUB_AD_UNIT_ID = "YOUR_INTERSTITIAL_UNIT_ID"
     }
 }

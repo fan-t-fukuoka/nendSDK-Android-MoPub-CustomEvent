@@ -1,7 +1,7 @@
 package net.nend.customevent.mopub
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.ViewGroup
 import com.mopub.mobileads.MoPubErrorCode
@@ -54,7 +54,7 @@ class BannerActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val MOPUB_AD_UNIT_ID = "YOUR_UNIT_ID"
+        const val MOPUB_AD_UNIT_ID = "YOUR_BANNER_UNIT_ID"
         const val TAG = "BannerActivity"
     }
 }
